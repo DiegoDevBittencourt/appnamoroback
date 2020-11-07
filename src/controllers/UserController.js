@@ -262,7 +262,7 @@ module.exports = {
 
         try {
 
-            //stores all users that was matched with currently user
+            //stores all users that was matched with current user
             const usersMatch = await UserMatch.findAll({
                 where: {
                     bothAccepted: 1,
@@ -317,8 +317,8 @@ module.exports = {
 
     async getProfileToTheMatchSearcher(req, res) {
         const {
-            currentlyLongitude: lng,
-            currentlyLatitude: lat,
+            currentLongitude: lng,
+            currentLatitude: lat,
             maxDistance: distance,
             userId,
             alreadyDownloadedProfileIds,
@@ -331,7 +331,7 @@ module.exports = {
         const ageB = new Date(`${(now.getFullYear() - ageRange[0]).toString()}/${now.getMonth() + 1}/${now.getDate()}`)
 
         try {
-            //stores all userIds that was already liked by currently user to exclude then when search by profiles
+            //stores all userIds that was already liked by current user to exclude then when search by profiles
             const usersMatch = await UserMatch.findAll({
                 where: {
                     [Op.or]: { proposerUserId: userId, accepterUserId: userId }
