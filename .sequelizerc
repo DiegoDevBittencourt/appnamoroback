@@ -1,0 +1,8 @@
+//arquivo usado para informar ao sequelize quais são as credenciais de acesso à base
+
+const path = require('path')
+
+module.exports = {
+    config: path.resolve(__dirname, 'src', 'config', 'dbConfig.js'),
+    'migrations-path': path.resolve(__dirname, 'src', 'database', 'migrations'),
+}

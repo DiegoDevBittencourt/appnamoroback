@@ -1,0 +1,10 @@
+TO DO LIST:
+
+Create project`s READ-ME
+
+OTHERS:
+
+Allow nodemailer to send emails via gmail: https://accounts.google.com/b/0/DisplayUnlockCaptcha
+or try enable "Access for less secure apps" on gmail account settings
+
+give a look at the token and see which kind of data is there
