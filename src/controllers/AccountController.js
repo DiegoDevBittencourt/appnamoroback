@@ -59,10 +59,10 @@ module.exports = {
             const user = await User.findOne({ where: { email } });
 
             if (!user)
-                return res.status(401).send(messages.invalidEmailOrPassword);
+                return res.status(400).send(messages.invalidEmailOrPassword);
 
             if (!await bcrypt.compare(password, user.password))
-                return res.status(401).send(messages.invalidEmailOrPassword);
+                return res.status(400).send(messages.invalidEmailOrPassword);
 
             user.password = undefined;
 

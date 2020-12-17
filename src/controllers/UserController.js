@@ -159,7 +159,7 @@ module.exports = {
             company,
             position,
             about,
-            lasLongitude,
+            lastLongitude,
             lastLatitude
         } = req.body.user;
 
@@ -187,7 +187,7 @@ module.exports = {
             user.company = company && company;
             user.position = position && position;
             user.about = about && about;
-            user.lasLongitude = lasLongitude && lasLongitude;
+            user.lastLongitude = lastLongitude && lastLongitude;
             user.lastLatitude = lastLatitude && lastLatitude;
 
             await user.save();
@@ -321,7 +321,7 @@ module.exports = {
             currentLatitude: lat,
             maxDistance: distance,
             userId,
-            alreadyDownloadedProfileIds,
+            profileIdsAlreadyDownloaded,
             searchingBy,
             ageRange
         } = req.body;
@@ -349,11 +349,11 @@ module.exports = {
             User.findOne({
                 where: User.sequelize.and(
                     { id: { [Op.ne]: userId } },
-                    { id: { [Op.notIn]: alreadyDownloadedProfileIds } },
+                    { id: { [Op.notIn]: profileIdsAlreadyDownloaded } },
                     { id: { [Op.notIn]: usersToExclude } },
                     { birthday: { [Op.between]: [ageA, ageB] } },
                     { showMeOnApp: 1 },
-                    searchingBy != 2 && { gender: searchingBy },//2 means all
+                    searchingBy != 2 && { gender: searchingBy },//2 == all
                     lat && lng && distance ? User.sequelize.where(
                         User.sequelize.literal(`
                         6371 * acos(cos(radians(${lat})) *
@@ -384,7 +384,6 @@ module.exports = {
                 order: User.sequelize.literal('rand()'),
 
             }).then((user) => {
-
                 res.status(200).send({ user });
             })
 
