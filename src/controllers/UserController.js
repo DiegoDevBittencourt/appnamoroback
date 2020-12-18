@@ -65,7 +65,9 @@ module.exports = {
     },
 
     async insertUserImage(req, res) {
+        console.log('insertUserImage')
         if (req.file) {
+
             const { userId } = req.params;
             const { location: url = '', key: amazonImageKey } = req.file;
 
@@ -86,6 +88,7 @@ module.exports = {
     },
 
     async deleteUserImage(req, res) {
+
         const { id } = req.params;
 
         try {

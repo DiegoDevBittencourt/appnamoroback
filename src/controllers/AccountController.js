@@ -21,10 +21,10 @@ module.exports = {
             if (!user) {
 
                 if (!validateEmail(email))
-                    return res.status(401).send(messages.invalidEmail);
+                    return res.status(400).send(messages.invalidEmail);
 
                 if (!validatePassword(req.body.password))
-                    return res.status(401).send(messages.invalidPassword);
+                    return res.status(400).send(messages.invalidPassword);
 
                 const password = await bcrypt.hash(req.body.password, 10);
 
@@ -38,7 +38,7 @@ module.exports = {
                 });
             }
             else
-                return res.status(401).send(messages.emailAlreadyUsed);
+                return res.status(400).send(messages.emailAlreadyUsed);
 
         } catch (err) {
 
@@ -125,7 +125,7 @@ module.exports = {
             }, (err) => {
 
                 if (err)
-                    return res.status(401).send(messages.unableToSendEmail);
+                    return res.status(400).send(messages.unableToSendEmail);
 
                 return res.status(200).send();
             });
@@ -162,7 +162,7 @@ module.exports = {
             }, (err) => {
 
                 if (err)
-                    return res.status(401).send(messages.unableToSendEmail);
+                    return res.status(400).send(messages.unableToSendEmail);
 
                 return res.status(200).send();
             });
@@ -184,7 +184,7 @@ module.exports = {
                 return res.status(404).send(messages.userNotFound);
 
             if (token !== user.emailVerificationToken)
-                return res.status(401).send(messages.invalidToken);
+                return res.status(400).send(messages.invalidToken);
 
             user.email = email;
             user.verifiedEmail = 1;
@@ -208,26 +208,26 @@ module.exports = {
 
         try {
             if (password == '' || password == null)
-                return res.status(401).send(messages.passwordCannotBeEmpty);
+                return res.status(400).send(messages.passwordCannotBeEmpty);
 
             if (password !== passwordConfirmation)
-                return res.status(401).send(messages.passwordsMustBeTheSame);
+                return res.status(400).send(messages.passwordsMustBeTheSame);
 
             if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/u.test(password))
-                return res.status(401).send(messages.invalidPassword);
+                return res.status(400).send(messages.invalidPassword);
 
             const user = await User.findOne({ where: { email } });
 
             if (!user)
-                return res.status(404).send(messages.emailNotFound);
+                return res.status(400).send(messages.emailNotFound);
 
             if (token !== user.passwordResetToken)
-                return res.status(401).send(messages.invalidToken);
+                return res.status(400).send(messages.invalidToken);
 
             const now = new Date();
 
             if (now > user.passwordResetExpires)
-                return res.status(401).send(messages.tokenExpired);
+                return res.status(400).send(messages.tokenExpired);
 
             const newPassword = await bcrypt.hash(password, 10);
 

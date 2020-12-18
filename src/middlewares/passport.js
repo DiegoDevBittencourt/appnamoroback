@@ -15,6 +15,7 @@ passport.use(new JwtStrategy({
     secretOrKey: process.env.JWT_SECRET
 
 }, async (jwtToken, done) => {
+    
     //this is used only for token authentication
     const { id } = jwtToken.payload;
 
