@@ -41,7 +41,8 @@ module.exports = {
                 return res.status(400).send(messages.emailAlreadyUsed);
 
         } catch (err) {
-
+            
+            console.log(err)
             return res.status(400).send(err);
         }
     },
@@ -95,6 +96,7 @@ module.exports = {
     },
 
     async sendRecoveryPasswordEmail(req, res) {
+        
         const { email } = req.body;
 
         try {
@@ -137,6 +139,7 @@ module.exports = {
     },
 
     async sendEmailVerification(req, res) {
+
         const { email, id } = req.body;
 
         try {

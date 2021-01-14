@@ -43,6 +43,7 @@ const storageTypes = {
 }
 
 module.exports = {
+    //note: there's a bug in this lib that when used on localhost only allows image files smaller than 64kb
     dest: path.resolve(__dirname, '..', '..', 'tmp', 'uploads'),
     storage: storageTypes['s3'],
     limits: {

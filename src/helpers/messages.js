@@ -10,5 +10,5 @@ module.exports = {
     userNotFound: 'Usuário não encontrado!',
     invalidToken: 'Token inválido.',
     tokenExpired: 'Token expirado, gere um novo.',
-    weFoundAnError: 'Encontramos um erro, tente novamente.'
+    weFoundAnError: 'Ops, encontramos um probleminha, tente novamente.'
 }

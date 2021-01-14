@@ -65,7 +65,7 @@ module.exports = {
     },
 
     async insertUserImage(req, res) {
-        console.log('insertUserImage')
+
         if (req.file) {
 
             const { userId } = req.params;

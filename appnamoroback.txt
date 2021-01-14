@@ -4,7 +4,9 @@ Create project`s READ-ME
 
 OTHERS:
 
-Allow nodemailer to send emails via gmail: https://accounts.google.com/b/0/DisplayUnlockCaptcha
+Allow nodemailer to send emails via gmail: https://accounts.google.com/DisplayUnlockCaptcha (try open this on incognito mode)
 or try enable "Access for less secure apps" on gmail account settings
 
-give a look at the token and see which kind of data is there
+look at heroku's logs:
+heroku login
+heroku logs --app appnamoroback
