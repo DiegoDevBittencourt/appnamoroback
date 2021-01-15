@@ -32,17 +32,17 @@ module.exports = {
                 user.password = password;
 
                 await User.create(user).then(createdUser => {
+
                     createdUser.password = undefined;
 
                     return res.status(200).send({ token: generateToken({ id: createdUser.id }) });
+
                 });
             }
             else
                 return res.status(400).send(messages.emailAlreadyUsed);
 
         } catch (err) {
-            
-            console.log(err)
             return res.status(400).send(err);
         }
     },
@@ -96,7 +96,7 @@ module.exports = {
     },
 
     async sendRecoveryPasswordEmail(req, res) {
-        
+
         const { email } = req.body;
 
         try {

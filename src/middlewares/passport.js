@@ -15,7 +15,7 @@ passport.use(new JwtStrategy({
     secretOrKey: process.env.JWT_SECRET
 
 }, async (jwtToken, done) => {
-    
+
     //this is used only for token authentication
     const { id } = jwtToken.payload;
 
@@ -56,11 +56,10 @@ passport.use('googleToken', new GoogleTokenStrategy({
             method: 'google',
             maxDistance: maxDistance,
             ageRange: ageRange,
-            showMeOnApp: 1,
+            showMeOnApp: 0,
             verifiedEmail: 1,
             emailNotification: 1,
             pushNotification: 1,
-            searchingBy: 1
         }
 
         await User.create(newUser).then(createdUser => { return done(null, createdUser) });
@@ -94,11 +93,10 @@ passport.use('facebookToken', new FacebookTokenStrategy({
             method: 'facebook',
             maxDistance: maxDistance,
             ageRange: ageRange,
-            showMeOnApp: 1,
+            showMeOnApp: 0,
             verifiedEmail: 1,
             emailNotification: 1,
             pushNotification: 1,
-            searchingBy: 1
         }
 
         await User.create(newUser).then(createdUser => { return done(null, createdUser) });
