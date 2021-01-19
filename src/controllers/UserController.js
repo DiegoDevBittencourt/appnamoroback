@@ -69,14 +69,14 @@ module.exports = {
         if (req.file) {
 
             const { userId } = req.params;
-            const { location: url = '', key: amazonImageKey } = req.file;
+            const { location, key } = req.file;
 
             try {
                 const userImage = new UserImage();
 
                 userImage.userId = userId;
-                userImage.imageUrl = url;
-                userImage.amazonImageKey = amazonImageKey;
+                userImage.imageUrl = location;
+                userImage.amazonImageKey = key;
 
                 await UserImage.create(userImage.dataValues);
                 return res.status(200).send('Success!');
