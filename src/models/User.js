@@ -38,10 +38,9 @@ class User extends Model {
     }
 
     static associate(models) {
-        this.hasMany(models.UserMatch, { foreignKey: 'proposerUserId', as: 'UserMatch' });
-        this.hasMany(models.UserImage, { foreignKey: 'userId' });
+        this.hasMany(models.UserMatch, { foreignKey: 'proposerUserId', as: 'userMatches' });
+        this.hasMany(models.UserImage, { foreignKey: 'userId', as: 'userImages' });
     }
-
 }
 
 module.exports = User;

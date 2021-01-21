@@ -46,7 +46,7 @@ module.exports = {
                 attributes: userAttributes,
                 where: { id },
                 include: [{
-                    model: UserImage,
+                    model: UserImage, as: 'userImages',
                     required: false
                 }]
 
@@ -265,7 +265,7 @@ module.exports = {
 
         try {
 
-            //stores all users that was matched with current user
+            //get all users that was matched with current user
             const usersMatch = await UserMatch.findAll({
                 where: {
                     bothAccepted: 1,
@@ -286,7 +286,7 @@ module.exports = {
                     id: { [Op.in]: usersIdsToSelect },
                 },
                 include: [{
-                    model: UserImage,
+                    model: UserImage, as: 'userImages',
                     required: false
                 }]
             }).then(users => {/*now I'm going to add the UserMatch property to the records... didn't added before
@@ -370,7 +370,7 @@ module.exports = {
                     ) : null,
                 ),
                 include: [{
-                    model: UserMatch, as: 'UserMatch',
+                    model: UserMatch, as: 'userMatches',
                     where: {
                         /*if a userMatch exists, it will not be someone that the user already liked
                         (cause the idea is to hide profiles liked by the user), so it MUST be someone that
@@ -381,7 +381,7 @@ module.exports = {
                     required: false
                 },
                 {
-                    model: UserImage,
+                    model: UserImage, as: 'userImages',
                     required: false
                 }],
                 order: User.sequelize.literal('rand()'),
