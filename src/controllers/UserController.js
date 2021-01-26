@@ -266,14 +266,14 @@ module.exports = {
         try {
 
             //get all users that was matched with current user
-            const usersMatch = await UserMatch.findAll({
+            const alreadyMatchedProfiles = await UserMatch.findAll({
                 where: {
                     bothAccepted: 1,
                     [Op.or]: { proposerUserId: userId, accepterUserId: userId }
                 }
             });
 
-            const usersIdsToSelect = usersMatch.map(item =>
+            const usersIdsToSelect = alreadyMatchedProfiles.map(item =>
                 item.dataValues.proposerUserId === parseInt(userId) ?
                     item.dataValues.accepterUserId
                     :
@@ -289,7 +289,8 @@ module.exports = {
                     model: UserImage, as: 'userImages',
                     required: false
                 }]
-            }).then(users => {/*now I'm going to add the UserMatch property to the records... didn't added before
+            }).then(users => {
+                /*now I'm going to add the UserMatch property to the records... didn't added before
             cause sequelize has issues when dealing with a table associated with 2 FK. FUCK SEQUELIZE!*/
 
                 UserMatch.findAll({
@@ -303,7 +304,7 @@ module.exports = {
 
                     const usersHelper = users.map(user => ({
                         ...user.dataValues,
-                        UserMatch: userMatch.filter(userMatch =>
+                        matchInfo: userMatch.filter(userMatch =>
                             user.id == userMatch.proposerUserId || user.id == userMatch.accepterUserId &&
                             userMatch.dataValues
                         )
@@ -335,13 +336,13 @@ module.exports = {
 
         try {
             //stores all userIds that was already liked by current user to exclude then when search by profiles
-            const usersMatch = await UserMatch.findAll({
+            const alreadyLikedProfiles = await UserMatch.findAll({
                 where: {
                     [Op.or]: { proposerUserId: userId, accepterUserId: userId }
                 }
             });
 
-            const usersToExclude = usersMatch.map(item =>
+            const usersToExclude = alreadyLikedProfiles.map(item =>
                 item.dataValues.proposerUserId === userId ?
                     item.dataValues.accepterUserId//this profile already appear to the user
                     :
