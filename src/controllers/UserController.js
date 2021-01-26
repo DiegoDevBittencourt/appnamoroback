@@ -370,7 +370,7 @@ module.exports = {
                     ) : null,
                 ),
                 include: [{
-                    model: UserMatch, as: 'userMatches',
+                    model: UserMatch, as: 'matchInfo',
                     where: {
                         /*if a userMatch exists, it will not be someone that the user already liked
                         (cause the idea is to hide profiles liked by the user), so it MUST be someone that
