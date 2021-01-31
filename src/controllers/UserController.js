@@ -352,6 +352,9 @@ module.exports = {
 
             User.findOne({
                 where: User.sequelize.and(
+                    { lastLongitude: { [Op.ne]: null } },
+                    { lastLatitude: { [Op.ne]: null } },
+                    { profileComplete: { [Op.eq]: 1 } },
                     { id: { [Op.ne]: userId } },
                     { id: { [Op.notIn]: profileIdsAlreadyDownloaded } },
                     { id: { [Op.notIn]: usersToExclude } },
