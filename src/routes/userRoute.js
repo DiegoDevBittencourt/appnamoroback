@@ -13,7 +13,7 @@ router.get('/get_user/:id', passport.authenticate('jwt', { session: false }), Us
 router.get('/get_match_profiles/:userId', passport.authenticate('jwt', { session: false }), UserController.getMatchProfiles);
 router.post('/get_profile_to_the_match_searcher', passport.authenticate('jwt', { session: false }), UserController.getProfileToTheMatchSearcher);
 router.post('/update_user', passport.authenticate('jwt', { session: false }), UserController.updateUser);
-router.post('/contact', passport.authenticate('jwt', { session: false }), UserController.newUserContact);
+router.post('/contact', /*passport.authenticate('jwt', { session: false }),*/ UserController.newUserContact);
 router.post('/create_or_update_user_match', passport.authenticate('jwt', { session: false }), UserController.createOrUpdateUserMatch);
 router.post('/unmatch', passport.authenticate('jwt', { session: false }), UserController.unmatch);
 router.post('/user_images/:userId', passport.authenticate('jwt', { session: false }), multer(multerConfig).single('file'), UserController.insertUserImage);
