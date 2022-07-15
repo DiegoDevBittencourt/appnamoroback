@@ -4,9 +4,9 @@ const passport = require('passport')
 const multer = require('multer');
 const multerConfig = require('../config/multer');
 
-require('../middlewares/passport')
+require('../middlewares/passport');
 
-const UserController = require('../controllers/UserController')
+const UserController = require('../controllers/UserController');
 
 //Routes:
 router.get('/get_user/:id', passport.authenticate('jwt', { session: false }), UserController.getUser);
