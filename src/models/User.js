@@ -27,8 +27,10 @@ class User extends Model {
             company: DataTypes.STRING,
             position: DataTypes.STRING,
             about: DataTypes.STRING,
-            lastLongitude: DataTypes.DECIMAL(10, 6),
-            lastLatitude: DataTypes.DECIMAL(10, 6),
+            // lastLongitude: DataTypes.DECIMAL(10, 6),
+            // lastLatitude: DataTypes.DECIMAL(10, 6),
+            lastLongitude: DataTypes.REAL,
+            lastLatitude: DataTypes.REAL,
             lastTimeSuperLikeWasUsed: DataTypes.DATE,
         }, {
             sequelize,//conexão
