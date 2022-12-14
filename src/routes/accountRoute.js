@@ -6,15 +6,15 @@ require('../middlewares/passport');
 const AccountController = require('../controllers/AccountController');
 
 //Routes:
-router.post('/signup', (req, res) => AccountController.signUp(req, res));
-router.post('/signin', (asd) => console.log(asd), (req, res) => AccountController.signIn(req, res));
-router.post('/google', passport.authenticate('googleToken', { session: false }), (req, res) => AccountController.oauthSignIn(req, res));
-router.post('/facebook', passport.authenticate('facebookToken', { session: false }), (req, res) => AccountController.oauthSignIn(req, res));
-router.post('/send_recovery_password_email', (req, res) => AccountController.sendRecoveryPasswordEmail(req, res));
-router.post('/send_email_verification', (req, res) => AccountController.sendEmailVerification(req, res));
-router.post('/update_verified_email', (req, res) => AccountController.updateVerifiedEmail(req, res));
-router.post('/passwordreset', (req, res) => AccountController.passwordReset(req, res));
-router.post('/check_if_token_has_expired', passport.authenticate('jwt', { session: false }), (req, res) => AccountController.checkIfTokenHasExpired(req, res));
-router.delete('/delete-account/:userId', passport.authenticate('jwt', { session: false }), (req, res) => AccountController.deleteAccount(req, res));
+router.post('/signup', AccountController.signUp);
+router.post('/signin', AccountController.signIn);
+router.post('/google', passport.authenticate('googleToken', { session: false }), AccountController.oauthSignIn);
+router.post('/facebook', passport.authenticate('facebookToken', { session: false }), AccountController.oauthSignIn);
+router.post('/send_recovery_password_email', AccountController.sendRecoveryPasswordEmail);
+router.post('/send_email_verification', AccountController.sendEmailVerification);
+router.post('/update_verified_email', AccountController.updateVerifiedEmail);
+router.post('/passwordreset', AccountController.passwordReset);
+router.post('/check_if_token_has_expired', passport.authenticate('jwt', { session: false }), AccountController.checkIfTokenHasExpired);
+router.delete('/delete-account/:userId', passport.authenticate('jwt', { session: false }), AccountController.deleteAccount);
 
 module.exports = router;

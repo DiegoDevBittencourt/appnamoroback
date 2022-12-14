@@ -31,7 +31,7 @@ class User extends Model {
             // lastLatitude: DataTypes.DECIMAL(10, 6),
             lastLongitude: DataTypes.REAL,
             lastLatitude: DataTypes.REAL,
-            lastTimeSuperLikeWasUsed: DataTypes.DATE,
+            lastTimeSuperLikeWasUsed: DataTypes.DATE
         }, {
             sequelize,//conexão
             tableName: 'users',
