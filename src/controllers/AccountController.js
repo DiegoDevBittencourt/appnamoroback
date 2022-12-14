@@ -81,16 +81,14 @@ module.exports = {
             await User.destroy({ where: { id: userId } });
 
             await UserImage.findAll({ where: { userId } }).then((images) => {
-
                 images.map((image) => {
                     const id = image.dataValues.id;
-                    const teste = UserController.deleteUserImage({ params: { id } }, null);
+                    UserController.deleteUserImage({ params: { id } }, null);
                 });
             });
 
             return res.status(200).send('Account successfully deleted!');
         } catch (err) {
-
             return res.status(400).send(err);
         }
     },
