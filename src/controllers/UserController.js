@@ -260,7 +260,7 @@ module.exports = {
         }
     },
 
-    async getMatchProfiles(req, res) {
+    async getMatchedProfiles(req, res) {
         const { userId } = req.params;
 
         try {

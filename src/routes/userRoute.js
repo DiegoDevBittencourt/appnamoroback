@@ -10,7 +10,7 @@ const UserController = require('../controllers/UserController');
 
 //Routes:
 router.get('/get_user/:id', passport.authenticate('jwt', { session: false }), UserController.getUser);
-router.get('/get_matched_profiles/:userId', passport.authenticate('jwt', { session: false }), UserController.getMatchProfiles);
+router.get('/get_matched_profiles/:userId', passport.authenticate('jwt', { session: false }), UserController.getMatchedProfiles);
 router.post('/get_profile_to_the_match_searcher', passport.authenticate('jwt', { session: false }), UserController.getProfileToTheMatchSearcher);
 router.post('/update_user', passport.authenticate('jwt', { session: false }), UserController.updateUser);
 router.post('/contact', /*passport.authenticate('jwt', { session: false }),*/ UserController.newUserContact);
