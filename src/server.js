@@ -15,7 +15,7 @@ app.use(routes);
 
 //start the server
 app.listen(process.env.PORT || 3333, function () {
-    console.log(`Servidor rodando na url ${process.env.API_URL}`);
+    console.log(`Server running on ${process.env.API_URL}`);
 });
 
 /*
