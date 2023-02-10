@@ -2,8 +2,8 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 
-const routes = require('./routes');
-require('./database');
+const routes = require('../src/routes');
+require('../src/database');
 
 const app = express();
 
@@ -14,7 +14,7 @@ app.use(cors());
 app.use(routes);
 
 //start the server
-app.listen(process.env.PORT || 3333, function () {
+app.listen(process.env.PORT || 9000, function () {
     console.log(`Server running on ${process.env.API_URL}`);
 });
 
