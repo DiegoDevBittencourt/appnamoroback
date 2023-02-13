@@ -11,15 +11,12 @@ const app = express();
 app.use(express.json());//pra api saber lidar com requisições que venham no formato de json
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
-app.use('/.netlify/functions/api', routes);
+app.use(routes);
 
 //start the server
 app.listen(process.env.PORT || 3333, function () {
     console.log(`Server running on ${process.env.API_URL}`);
 });
-
-
-module.exports.handler = serverless(app);
 
 /*
 developed by DIEGO ALVES BITTENCOURT
