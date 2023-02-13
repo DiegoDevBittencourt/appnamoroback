@@ -9,6 +9,9 @@ require('../middlewares/passport');
 const UserController = require('../controllers/UserController');
 
 //Routes:
+router.get('/getTest', (req, res) => {
+    res.send('hello world')
+  });
 router.get('/get_user/:id', passport.authenticate('jwt', { session: false }), UserController.getUser);
 router.get('/get_matched_profiles/:userId', passport.authenticate('jwt', { session: false }), UserController.getMatchedProfiles);
 router.post('/get_profile_to_the_match_searcher', passport.authenticate('jwt', { session: false }), UserController.getProfileToTheMatchSearcher);
