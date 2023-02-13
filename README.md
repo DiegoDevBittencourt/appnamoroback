@@ -8,8 +8,8 @@ You can run this repo in your machine by setting an .env file on root folder wit
 ```
 API_URL=http://localhost:3333/
 FRONTEND_URL=https://your_url_here.com/
-AWS_ACCESS_KEY_ID_=''
-AWS_SECRET_ACCESS_KEY_=''
+AWS_ACCESS_KEY_ID=''
+AWS_SECRET_ACCESS_KEY=''
 AWS_DEFAULT_REGION=''
 AMAZON_BUCKET_NAME=''
 JWT_SECRET=''
