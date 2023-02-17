@@ -3,7 +3,8 @@ const { Model, DataTypes } = require('sequelize')
 class UserImage extends Model {
     static init(sequelize) {
         super.init({
-            userId: DataTypes.INTEGER,
+            id: DataTypes.STRING,
+            userId: DataTypes.STRING,
             imageUrl: DataTypes.STRING,
             amazonImageKey: DataTypes.STRING
         }, {

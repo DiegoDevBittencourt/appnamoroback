@@ -4,13 +4,13 @@ class UserMatch extends Model {
     static init(sequelize) {
         super.init({
             proposerUserId: {
-                type: DataTypes.INTEGER,
+                type: DataTypes.STRING,
                 //references: "users",
                 //referencesKey: "id",
                 primaryKey: true
             },
             accepterUserId: {
-                type: DataTypes.INTEGER,
+                type: DataTypes.STRING,
                 //references: "users",
                 //referencesKey: "id",
                 primaryKey: true

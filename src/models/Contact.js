@@ -3,7 +3,8 @@ const { Model, DataTypes } = require('sequelize')
 class Contact extends Model {
     static init(sequelize) {
         super.init({
-            name: DataTypes.INTEGER,
+            id: DataTypes.STRING,
+            name: DataTypes.STRING,
             email: DataTypes.STRING,
             subject: DataTypes.STRING,
             message: DataTypes.STRING(8000)
