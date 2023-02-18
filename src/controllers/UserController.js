@@ -1,5 +1,6 @@
 const aws = require('aws-sdk');
 const { Op } = require("sequelize");
+const { v4 } = require("uuid");
 
 const User = require('../models/User');
 const UserImage = require('../models/UserImage');
@@ -74,6 +75,7 @@ module.exports = {
             try {
                 const userImage = new UserImage();
 
+                userImage.id = v4();
                 userImage.userId = userId;
                 userImage.imageUrl = location;
                 userImage.amazonImageKey = key;
@@ -206,7 +208,10 @@ module.exports = {
         try {
             const contact = req.body;
 
-            await Contact.create(contact).then((e) => {
+            await Contact.create({
+                ...contact,
+                id: v4()
+            }).then((e) => {
                 return res.status(200).send('Contact successfully created!');
             });
         }
