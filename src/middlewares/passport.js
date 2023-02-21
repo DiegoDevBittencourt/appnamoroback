@@ -86,10 +86,10 @@ passport.use('facebookToken', new FacebookTokenStrategy({
 
         // Otherwise, creates one and return it
         const newUser = {
-            oauthUId: profile.id,
-            email: profile.emails[0].value,
-            firstName: profile.name.givenName,
-            lastName: profile.name.familyName,
+            oauthUId: profile?.id,
+            email: profile?.emails[0]?.value,
+            firstName: profile?.name?.givenName,
+            lastName: profile?.name?.familyName,
             method: 'facebook',
             maxDistance: maxDistance,
             ageRange: ageRange,

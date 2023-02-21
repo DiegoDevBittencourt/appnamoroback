@@ -278,11 +278,11 @@ module.exports = {
                 }
             });
 
-            const usersIdsToSelect = alreadyMatchedProfiles.map(item =>
-                item.dataValues.proposerUserId === parseInt(userId) ?
-                    item.dataValues.accepterUserId
+            const usersIdsToSelect = alreadyMatchedProfiles?.map(item =>
+                item?.dataValues?.proposerUserId === userId ?
+                    item?.dataValues?.accepterUserId
                     :
-                    item.dataValues.proposerUserId
+                    item?.dataValues?.proposerUserId
             );
 
             await User.findAll({
